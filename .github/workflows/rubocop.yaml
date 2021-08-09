@@ -10,10 +10,12 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.0.0
-      - name: rubocop
-        uses: reviewdog/action-rubocop@v1
-        with:
-          rubocop_version: gemfile
-          rubocop_extensions: rubocop-rails:gemfile rubocop-rspec:gemfile
-          github_token: ${{ secrets.GH_TOKEN }}
-          reporter: github-pr-review # Default is github-pr-check
+      - run: gem install rubocop
+      - run: rubocop
+      # - name: rubocop
+      #   uses: reviewdog/action-rubocop@v1
+      #   with:
+      #     rubocop_version: gemfile
+      #     rubocop_extensions: rubocop-rails:gemfile rubocop-rspec:gemfile
+      #     github_token: ${{ secrets.GH_TOKEN }}
+      #     reporter: github-pr-review # Default is github-pr-check
